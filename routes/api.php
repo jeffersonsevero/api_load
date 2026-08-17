@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('users', function () {
 
-    return User::query()->paginate(15);
+    return User::query()->cursorPaginate(15);
 
 });
 
