@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
@@ -10,7 +11,10 @@ Route::get('/user', function (Request $request) {
 
 Route::get('users', function () {
 
-    return User::query()->cursorPaginate(15);
+    return DB::table('users')
+        ->select(['id', 'name', 'email'])
+        ->orderBy('id')
+        ->cursorPaginate(20);
 
 });
 
