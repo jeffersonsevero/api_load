@@ -14,7 +14,7 @@ Route::get('users', function () {
     return DB::table('users')
         ->select(['id', 'name', 'email'])
         ->orderBy('id')
-        ->cursorPaginate(20);
+        ->paginate(20);
 
 });
 
